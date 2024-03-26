@@ -157,7 +157,7 @@ public class Main extends JFrame {
 
     private void playMusic() {
         try {
-            File musicPath = new File("C://Users//sizip//Downloads//oxp.wav");
+            File musicPath = new File("원하는WAV파일");
             if (musicPath.exists()) {
                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
                 Clip clip = AudioSystem.getClip();
