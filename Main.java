@@ -5,6 +5,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
+import java.net.URL;
+import java.net.HttpURLConnection;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 
 public class Main extends JFrame {
     private JTextArea textArea;
@@ -53,6 +63,7 @@ public class Main extends JFrame {
         add(panel, BorderLayout.CENTER);
     }
 
+
     private void processCommand(String command, File[] fileList) {
         switch (command.toLowerCase()) {
             case "exit":
@@ -70,7 +81,7 @@ public class Main extends JFrame {
 
 
             case "?":
-                textArea.append("도움말: 사용 가능한 명령어는 exit, cls, edit, del, ls, help 입니다.\n");
+                textArea.append("도움말: 사용 가능한 명령어는 exit, cls, edit, del, ls, help,date,ip 입니다.\n");
                 break;
             case "del":
                 deleteFileName = JOptionPane.showInputDialog(this, "지울 파일 이름:");
@@ -102,6 +113,60 @@ public class Main extends JFrame {
                     }
                 }
                 break;
+            // switch 문 내에 추가
+            case "cd":
+                String commandText = commandField.getText();
+                if (commandText.length() > 3) {
+                    String targetDirectory = commandText.substring(3); // "cd " 이후의 문자열을 경로로 사용
+                    File newDir = new File(targetDirectory);
+                    if (newDir.exists() && newDir.isDirectory()) {
+                        try {
+                            // 현재 작업 디렉토리를 새 경로로 변경
+                            System.setProperty("user.dir", newDir.getCanonicalPath());
+                            textArea.append("현재 디렉토리가 변경되었습니다: " + System.getProperty("user.dir") + "\n");
+                        } catch (IOException e) {
+                            textArea.append("디렉토리 변경 중 오류가 발생했습니다.\n");
+                        }
+                    } else {
+                        textArea.append("해당 디렉토리가 존재하지 않습니다.\n");
+                    }
+                } else {
+                    textArea.append("유효한 경로를 입력해주세요.\n");
+                }
+                break;
+
+
+
+            case "date":
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+                DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH시 mm분 ss초");
+                String dayOfWeek = now.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.KOREAN);
+
+                textArea.append("현재 날짜: " + now.format(dateFormatter) + "\n");
+                textArea.append("현재 시간: " + now.format(timeFormatter) + "\n");
+                textArea.append("오늘 요일: " + dayOfWeek + "\n");
+                break;
+
+            case "ip":
+                try {
+                    // 로컬 IP 주소 찾기
+                    InetAddress localIP = InetAddress.getLocalHost();
+                    textArea.append("현재 로컬 IP 주소: " + localIP.getHostAddress() + "\n");
+
+                    // 외부 IP 주소 찾기
+                    URL url = new URL("http://checkip.amazonaws.com");
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                        String externalIP = reader.readLine();
+                        textArea.append("현재 외부 IP 주소: " + externalIP + "\n");
+                    }
+                } catch (Exception e) {
+                    textArea.append("IP 주소를 가져오는 중 오류가 발생했습니다.\n");
+                }
+                break;
+
+
 
 
             default:
@@ -110,7 +175,7 @@ public class Main extends JFrame {
         }
     }
 
-    private void editFile(File file) {
+    private void editFile(File ignoredFile) {
     }
 
 
@@ -172,8 +237,6 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new Main().setVisible(true);
-        });
+        SwingUtilities.invokeLater(() -> new Main().setVisible(true));
     }
 }
