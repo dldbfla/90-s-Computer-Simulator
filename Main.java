@@ -16,14 +16,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 
-public class Main extends JFrame {
+public class adda extends JFrame {
     private JTextArea textArea;
     private JTextField commandField;
     private JButton powerButton;
     private boolean powerOn = false; // 시스템 전원 상태를 나타내는 변수
     private String deleteFileName;
 
-    public Main() {
+    public adda() {
         setTitle("Command Processor");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,7 +81,7 @@ public class Main extends JFrame {
 
 
             case "?":
-                textArea.append("도움말: 사용 가능한 명령어는 exit, cls, edit, del, ls, help,date,ip 입니다.\n");
+                textArea.append("도움말: 사용 가능한 명령어는 ? , cls, edit, del, ls, help,date,ip 입니다.\n");
                 break;
             case "del":
                 deleteFileName = JOptionPane.showInputDialog(this, "지울 파일 이름:");
@@ -175,11 +175,12 @@ public class Main extends JFrame {
         }
     }
 
-    private void editFile(File ignoredFile) {
-    }
 
 
-    private void togglePower() {
+
+
+
+            private void togglePower() {
         if (powerOn) {
             int confirm = JOptionPane.showConfirmDialog(this, "시스템을 종료하시겠습니까?", "종료 확인", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
@@ -237,6 +238,6 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Main().setVisible(true));
+        SwingUtilities.invokeLater(() -> new adda().setVisible(true));
     }
 }
