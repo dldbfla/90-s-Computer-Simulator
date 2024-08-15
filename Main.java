@@ -16,14 +16,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 
-public class adda extends JFrame {
+public class Main extends JFrame {
     private JTextArea textArea;
     private JTextField commandField;
     private JButton powerButton;
     private boolean powerOn = false; // 시스템 전원 상태를 나타내는 변수
     private String deleteFileName;
 
-    public adda() {
+    public Main() {
         setTitle("Command Processor");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
