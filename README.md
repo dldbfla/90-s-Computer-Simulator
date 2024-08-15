@@ -3,7 +3,7 @@
 ## 기능
 
 
-#### 전원 
+## 전원 
 
 
 ![스크린샷 2024-08-15 210429](https://github.com/user-attachments/assets/c61b89ad-31c5-4166-aeef-e02bb3f701cf)
@@ -15,7 +15,7 @@
 전원 박스를 눌러 켜져있는 경우엔 하늘색
 전원이 켜져있는 상태에서 한번더 전원 박스를 눌러서 끄면 빨간색이 됩니다.
 
-#### 기본    
+## 기본    
 
 ![스크린샷 2024-08-15 210852](https://github.com/user-attachments/assets/7f1711d2-a4fd-484f-81dc-1acc98ab26b5)
 
@@ -23,7 +23,7 @@
 전원이 켜지면 아래 하단에 단어를 쓸수있습니다.
 
 
-### ?
+## ?
 
 
 ![스크린샷 2024-08-15 211050](https://github.com/user-attachments/assets/58ed65ab-4ba6-41c7-a62a-4f1099d25409)
@@ -31,29 +31,29 @@
 
 ?은 도움말이며 사용가능한 명령어를 화면에 보여줍니다.
 
-### cls
+## cls
 
 ![스크린샷 2024-08-15 211100](https://github.com/user-attachments/assets/00896ff9-4ce2-4db2-8a77-864c49f024a6)
 
 
 cls는 화면에 있는 명령어들을 지우는 역할을 합니다.
 
-### ls
+## ls
 ![스크린샷 2024-08-15 211111](https://github.com/user-attachments/assets/e604cef7-70a5-4cee-b97f-da607035dc7a)
 
 
 ls는 Main.java 파일안에있는 다른 파일을 보여줍니다.
 
-### date
+## date
 ![스크린샷 2024-08-15 211124](https://github.com/user-attachments/assets/9c5afe5f-ec2f-416b-8f51-99b9d4a1ed1c)
 
 date는 날짜를 알려주는 명령어입니다.
 
-### ip
+## ip
 
 ip는 사용자의 ip를 알려주는 명령어입니다.
 
-### del
+## del
 
 del는  Main.java 파일안에있는 다른 파일을 삭제할수있습니다.
 
